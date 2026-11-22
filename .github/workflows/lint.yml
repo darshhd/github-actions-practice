@@ -1,0 +1,19 @@
+on:
+  push:
+    paths:
+    - "*.py"
+
+jobs:
+  lint-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Setup python
+      uses: actions/setup-python@v7
+      with:
+        python-version: '3.13'
+    - name: Install linter
+      run: pip install ruff
+    - name: Check files for linting
+      run: ruff check .
