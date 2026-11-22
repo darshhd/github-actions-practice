@@ -1,0 +1,31 @@
+name: CICD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone the code
+      run: echo "Cloning"
+  build:
+    needs: code
+    runs-on: ubuntu-latest
+    steps:
+    - name: Building using docker
+      run: echo "Building the app"
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Testing the code
+      run: echo "Testing the app"
+  deploy:
+    needs: [code,build]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploying the application
+      run: echo "Deploying the app to the registry"
+    
+  
