@@ -1,6 +1,7 @@
 # Goal: Build the image for devboard frontend and push to dockerhub
 on:
-  push: main
+  push:
+    branches: [master]
 
 
 jobs:
